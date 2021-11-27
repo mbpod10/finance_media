@@ -109,3 +109,7 @@ class Stock < ApplicationRecord
 
 end
 ```
+### Front End
+```
+$ rails generate controller users my_portfolio
+```
