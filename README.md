@@ -81,7 +81,17 @@ $ rails c
 ```rb
 client = IEX::Api::Client.new(
   publishable_token: '#{API_key}',
-  secret_token: 'secret_token',
-  endpoint: 'https://cloud.iexapis.com/v1'
+  secret_token: '#{API_key}',
+  endpoint: 'https://cloud.sandbox.com/v1'
 )
+```
+## Stock Model
+```
+$ rails generate model Stock ticker:string name:string last_price:decimal
+$ rails db:migrate
+```
+
+## Save API Keys
+```
+$ EDITOR="code --wait" rails credentials:edit
 ```
