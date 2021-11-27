@@ -1,24 +1,18 @@
-# README
+This is the finance tracker app
+```
+$ rails _6.1.4.1_ new finance_media                                 
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![login_welcome](https://github.com/heartcombo/devise#starting-with-rails)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```rb
+# Gembilfe:
+gem 'devise'
+```
+```
+# Run in terminal:
+$ rails generate devise:install
+$ rails generate devise User
+$ rails routes | grep users
+$ rails db:migrate
+```
