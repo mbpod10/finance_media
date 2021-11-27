@@ -65,3 +65,23 @@ $ bundle install
 $ rails generate devise:views:bootstrap_templates
 $ rails s
 ```
+
+### API
+[IEX Cloud](https://iexcloud.io/) </br>
+[iex-ruby-client](https://github.com/dblock/iex-ruby-client)
+```rb
+# Gemfile
+gem 'iex-ruby-client'
+```
+```
+$ bundle install
+$ rails c
+```
+
+```rb
+client = IEX::Api::Client.new(
+  publishable_token: '#{API_key}',
+  secret_token: 'secret_token',
+  endpoint: 'https://cloud.iexapis.com/v1'
+)
+```
