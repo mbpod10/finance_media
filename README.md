@@ -53,3 +53,15 @@ import "bootstrap"
  *= require_self
  */
 ```
+
+### Style Devise Forms
+
+[Devise Bootstrap Views](https://github.com/hisea/devise-bootstrap-views) is used to style Devise forms with bootstrap
+```rb
+gem 'devise-bootstrap-views', '~> 1.0'
+```
+```
+$ bundle install
+$ rails generate devise:views:bootstrap_templates
+$ rails s
+```
