@@ -6,10 +6,22 @@
   <div class="card card-header results-block">
     <strong> Symbol: </strong> <%= "$#{@stock.ticker}"%>
     <strong> Name: </strong> <%= @stock.name%>
-    <strong> Price: </strong> <%= @stock.last_price%>
+    <strong> Price: </strong> <%= number_to_currency(@stock.last_price) %>
 
-    <%= link_to 'Add To Portfolio', user_stocks_path(user: current_user, 
-    ticker: @stock.ticker), class: "btn btn-success add_button", method: :post %>
+    <% if current_user.can_track_stock?(@stock.ticker)%>
+      <%= link_to 'Add To Portfolio', user_stocks_path(user: current_user, 
+      ticker: @stock.ticker), class: "btn btn-success add_button", method: :post %>
+    <% else %>
+      <span class="badge badge-secondary">
+       You Are Already Tracking
+       <% if !current_user.under_stock_limit? %>
+        10 Stocks
+      <% end %>
+      <% if current_user.stock_already_tracked?(@stock.ticker) %>
+        <%= @stock.ticker %>
+      <% end %>
+      </span>
+    <% end %>
 
   </div>
 <% end %>
