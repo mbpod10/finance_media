@@ -117,4 +117,8 @@ $ rails generate controller users my_portfolio
 ### Many To Many Relationship With Stocks and Users
 ```
 $ rails generate resource UserStock user:references stock:references
+````
+
+```
+$ rails generate migration add_first_last_name_to_users
 ```
