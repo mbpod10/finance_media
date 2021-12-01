@@ -27,4 +27,8 @@ class User < ApplicationRecord
     "Anon"
   end
 
+  def self.search(query)
+    friends = User.where("first_name LIKE ?", "%#{query}%")
+  end
+
 end
