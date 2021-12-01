@@ -1,0 +1,5 @@
+<h1> <%= current_user.full_name %> Friends </h1>
+
+<% if @friends.any? %>
+  <%= render 'friends' %>
+<% end %>

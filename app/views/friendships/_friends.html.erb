@@ -1,0 +1,30 @@
+  <div class="row">
+    <div class="col-10">
+      <table class="table table-bordered table-hover table-grey">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Stocks</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+
+          <% @friends.each_with_index do |friend, index|%>
+            <tr>
+              
+              <td> <%= "#{index + 1 }." %> </td>
+              <th scope="row"><%= friend.full_name =%></th>
+              <td><%= friend.email %></td>
+              <td><%= friend.stocks.count %></td>
+            
+
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+    </div>
+  </div>

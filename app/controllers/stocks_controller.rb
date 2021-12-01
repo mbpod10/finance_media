@@ -22,4 +22,9 @@ class StocksController < ApplicationController
 
     end
   end
+
+  def show
+    @stock = Stock.where(ticker: params[:ticker]).first
+  end
+
 end

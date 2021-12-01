@@ -122,3 +122,11 @@ $ rails generate resource UserStock user:references stock:references
 ```
 $ rails generate migration add_first_last_name_to_users
 ```
+
+### Friends Self Referential Associate Users
+
+[Devise](https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course/learn/lecture/3853280#questions)
+
+```
+$ rails generate model Friendship user:references
+```

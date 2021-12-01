@@ -23,6 +23,10 @@
                 <%= link_to user_stock_path(stock), :method => 'delete' do %>
                     <%= fa_icon 'trash 2x trash-ico' %>
                 <% end %>
+
+                <%= link_to user_show_stock_path(current_user, stock.ticker)  do %>
+                    <%= fa_icon 'stop 2x' %>
+                <% end %>
               </td>
 
             </tr>
