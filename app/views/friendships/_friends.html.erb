@@ -21,7 +21,7 @@
               <td><%= friend.stocks.count %></td>
               
               <td>
-                <%= link_to '', :method => 'delete' do %>
+                <%= link_to user_path(friend), :method => 'get' do %>
                   <%= fa_icon 'user 2x friend' %>
                 <% end %>
 
