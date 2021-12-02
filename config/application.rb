@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module FinanceMedia
   class Application < Rails::Application
+    config.action_cable.mount_path = '/websocket'
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 

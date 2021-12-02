@@ -8,6 +8,9 @@ class UsersController < ApplicationController
   def my_portfolio
     @tracked_stocks = current_user.stocks
     @user = current_user
+    current_user.stocks.map {|stock| stock.ticker}.each do |ticker|
+        puts ticker.to_s
+      end
   end
 
 

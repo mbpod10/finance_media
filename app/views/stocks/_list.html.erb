@@ -18,7 +18,7 @@
               <td> <%= "#{index + 1 }." %> </td>
               <th scope="row"><%= stock.ticker =%></th>
               <td><%= stock.name %></td>
-              <td><%= number_to_currency(stock.last_price) %></td>       
+              <td id="<%= stock.ticker %>"><%= number_to_currency(stock.last_price) %></td>       
               <td>
 
                 <% if current_user.can_track_stock?(stock.ticker)%>
