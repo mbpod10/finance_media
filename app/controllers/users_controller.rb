@@ -8,11 +8,20 @@ class UsersController < ApplicationController
   def my_portfolio
     @tracked_stocks = current_user.stocks
     @user = current_user
-  
-    @tracked_stocks.each do |stock|
-      get_price(stock)
-    end    
+    
+    # @tracked_stocks.each do |stock|
+    #   get_price(stock)
+    # end
+    ActionCable.server.broadcast "price_fetcher_channel", {data: get_prices(@tracked_stocks)}
+    # ActionCable.server.broadcast "price_fetcher_channel", {ticker: stock.ticker, price: new_price, color: color}
   end
+  
+  # def portfolio_refresh
+  #   @tracked_stocks = current_user.stocks
+  #   @user = current_user
+  #   ActionCable.server.broadcast "price_fetcher_channel", {data: get_prices(@tracked_stocks)}
+
+  # end
 
 
   def search
@@ -42,13 +51,23 @@ class UsersController < ApplicationController
 
   private
 
-  def get_price(stock)
-    old_price = stock.last_price
-    new_price = client.price(stock.ticker)
-    color = stock.last_price < new_price ? "green" : "red"
-    stock[:last_price] = new_price
-    stock.save
-    ActionCable.server.broadcast "price_fetcher_channel", {ticker: stock.ticker, price: new_price, color: color}
+  def get_prices(stocks)
+    return_obj = []
+    stocks.each do |stock|
+      old_price = stock.last_price
+      new_price = client.price(stock.ticker)
+      color = stock.last_price < new_price ? "green" : "red"
+      stock[:last_price] = new_price
+      stock.save
+
+      stock_object = {
+        "ticker": stock.ticker,
+        "price":  new_price,
+        "color": color
+      }
+      return_obj.push(stock_object)
+    end
+    return_obj
   end
   
   def current_user_ticker_array 

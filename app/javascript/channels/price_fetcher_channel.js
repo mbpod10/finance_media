@@ -14,8 +14,13 @@ consumer.subscriptions.create("PriceFetcherChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
-    console.log(data)
-    $(`#${data.ticker}`).text((`$${dollarUSLocale.format(data.price)}`))
-    $(`#${data.ticker}`).css("color", data.color)
+    // console.log(data.data)
+    // $(`#${data.ticker}`).text((`$${dollarUSLocale.format(data.price)}`))
+    // $(`#${data.ticker}`).css("color", data.color)
+    for (let x = 0; x < data.data.length; x++) {
+      $(`#${data.data[x].ticker}`).text((`$${dollarUSLocale.format(data.data[x].price)}`))
+      $(`#${data.data[x].ticker}`).css("color", data.data[x].color)
+
+    }
   }
 });
